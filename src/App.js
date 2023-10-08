@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Route from "./components/Route";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart";
+import { useState } from "react";
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    console.log("yo please work");
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar onClick={openModal} />
+      <Route path={"/"}>
+        <Home setCartItems={setCartItems} openModal={openModal} />
+      </Route>
+      <Route path={"/products"}>
+        <Products setCartItems={setCartItems} openModal={openModal} />
+      </Route>
+      <Route path={"/about"}>
+        <About />
+      </Route>
+      <Route path={"/contact"}>
+        <Contact />
+      </Route>
+      {isModalOpen && (
+        <Cart
+          onClose={closeModal}
+          setCartItems={setCartItems}
+          cartItems={cartItems}
+        />
+      )}
+      <Footer />
     </div>
   );
 }

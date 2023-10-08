@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.section-title {
+  font-size: 2em;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+.item-price {
+  font-size: 1.8em;
+}
+.nav-item {
+  padding: 0 18px;
+  font-size: 1.2em;
+}
+.navbar {
+  padding: 1.5em 0;
+}
+.btn-wrap {
+  font-weight: 500;
+  text-transform: capitalize;
+  width: fit-content;
+}
+a {
+  color: var(--dark-color);
+  text-decoration: none;
+  transition: 0.3s color ease-out;
+  padding-bottom: 20px;
+}
+.bi-arrow-right {
+  margin-left: 8px;
+}
+
+.intro {
+  margin: 0 !important;
+  padding: 2em 5em !important;
+  max-width: 100%;
+}
+.navbar-nav {
+  text-align: center;
+}
+footer {
+  margin-top: 10px;
+}
+.quick-buy {
+  position: "absolute";
+  bottom: "0";
+  left: "0";
+  width: "100%";
+}

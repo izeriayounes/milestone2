@@ -1,0 +1,38 @@
+/* Ensure the modal is in the right */
+.right-full-height-modal {
+  height: 100%;
+  margin-top: 0;
+  padding: 2em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 90%;
+  max-width: 500px;
+  background-color: #fff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+
+.modal-content {
+  border: none;
+}
+
+.modal-header {
+  border: none;
+}
+
+.fixed-bottom {
+  width: 90%;
+  max-width: 500px;
+  left: auto !important;
+  padding: 5px;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+.margin-bottom-10 {
+  margin-bottom: 7em;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
