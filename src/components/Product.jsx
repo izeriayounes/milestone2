@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import cameraImg from "../assets/img.webp";
 
 export default function Product({
   openModal,
@@ -23,7 +22,7 @@ export default function Product({
   const handleClick = () => {
     const itemToAdd = {
       id: Date.now(),
-      image: cameraImg,
+      image: imgSrc,
       name,
       description,
       category,

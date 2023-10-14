@@ -5,9 +5,9 @@ export default function Footer() {
         <div className="row">
           <div className="col-6">
             <h5 className="pb-2">Contact Us</h5>
-            <p>123 Street Name, City</p>
-            <p>Email: info@example.com</p>
-            <p>Phone: +123 456 7890</p>
+            <p>Glenwood Avenue, New Jersey</p>
+            <p>Email: info.toteally@gmail.com</p>
+            <p>Phone: +609 436 7690</p>
           </div>
           <div className="col-6 text-right">
             <h5>Follow Us</h5>

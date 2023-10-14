@@ -1,146 +1,113 @@
-import cameraImg from "../assets/img.webp";
 import Product from "../components/Product";
+import tote7 from "../assets/tote7.jpg";
+import tote8 from "../assets/tote8.jpg";
+import tote9 from "../assets/tote9.jpg";
+import tote10 from "../assets/tote10.jpg";
+import tote11 from "../assets/tote11.jpg";
+import tote12 from "../assets/tote12.jpg";
+import tote13 from "../assets/tote13.jpg";
+import tote14 from "../assets/tote14.jpg";
+import tote15 from "../assets/tote15.jpg";
+import tote16 from "../assets/tote16.jpg";
+import tote17 from "../assets/tote17.jpg";
+import tote18 from "../assets/tote18.jpg";
 
 const products = [
   {
     id: 1,
-    name: "Product 1",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "You Know Me",
+    description: " Classic Tote Canvas bag. ",
     category: "Category 1",
-    price: 19.99,
+    price: 7.34,
+    src: tote7,
   },
   {
     id: 2,
-    name: "Product 2",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "Autumn Days",
+    description: " Light Autumn Days Canvas Tote Bag . ",
     category: "Category 2",
-    price: 24.99,
+    price: 5.16,
+    src: tote8,
   },
   {
     id: 3,
-    name: "Product 3",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "One Direction",
+    description: " One Direction Quote Canvas Tote Bag. ",
     category: "Category 1",
-    price: 29.99,
+    price: 6.1,
+    src: tote9,
   },
   {
     id: 4,
-    name: "Product 4",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "Gotta Think Big Tote Bag",
+    description: " Think Big Graphic Tote Bag.",
     category: "Category 3",
-    price: 14.99,
+    price: 10.99,
+    src: tote18,
   },
   {
     id: 5,
-    name: "Product 5",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "Chic Tote Twins",
+    description: " Classic Twin Solid Bag.",
     category: "Category 2",
-    price: 39.99,
+    price: 14.99,
+    src: tote11,
   },
   {
     id: 6,
-    name: "Product 6",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "Large Essesntials",
+    description: " Large Essentials Tote Bag.",
     category: "Category 3",
-    price: 12.99,
+    price: 11.18,
+    src: tote12,
   },
   {
     id: 7,
-    name: "Product 7",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "Fruit Á Cartoon Tote Bag",
+    description: " Fruits Á Cartoon Vibe Tote Bag.",
     category: "Category 1",
-    price: 21.99,
+    price: 4.99,
+    src: tote13,
   },
   {
     id: 8,
-    name: "Product 8",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "Self Love Tote Bag",
+    description: " Self Love Inspo Tote Bag. ",
     category: "Category 2",
-    price: 34.99,
+    price: 4.87,
+    src: tote14,
   },
   {
     id: 9,
-    name: "Product 9",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "HTML Everyday",
+    description: " Graphic H.T.M.L Tote Bag.",
     category: "Category 3",
-    price: 9.99,
+    price: 7.49,
+    src: tote15,
   },
   {
     id: 10,
-    name: "Product 10",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "White Bear Tote Bag",
+    description: " Graphic White Bear Tote Bag.",
     category: "Category 1",
-    price: 27.99,
+    price: 1.99,
+    src: tote16,
   },
   {
     id: 11,
-    name: "Product 11",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "Let's Go Together Tote Bag",
+    description: " Aventure Together Graphic Tote Bag.",
     category: "Category 2",
-    price: 19.99,
+    price: 6.99,
+    src: tote17,
   },
   {
     id: 12,
-    name: "Product 12",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "I'm So Solid",
+    description: " Solid Tote Bag. ",
     category: "Category 3",
-    price: 14.99,
-  },
-  {
-    id: 13,
-    name: "Product 13",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    category: "Category 1",
-    price: 31.99,
-  },
-  {
-    id: 14,
-    name: "Product 14",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    category: "Category 2",
-    price: 23.99,
-  },
-  {
-    id: 15,
-    name: "Product 15",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    category: "Category 3",
-    price: 17.99,
-  },
-  {
-    id: 16,
-    name: "Product 16",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    category: "Category 1",
-    price: 37.99,
-  },
-  {
-    id: 17,
-    name: "Product 17",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    category: "Category 2",
-    price: 28.99,
-  },
-  {
-    id: 18,
-    name: "Product 18",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    category: "Category 3",
-    price: 22.99,
-  },
-  {
-    id: 19,
-    name: "Product 19",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    category: "Category 1",
-    price: 32.99,
-  },
-  {
-    id: 20,
-    name: "Product 20",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    category: "Category 2",
-    price: 26.99,
+    price: 10.76,
+    src: tote10,
   },
 ];
 
@@ -155,11 +122,46 @@ export default function Products({ setCartItems, openModal }) {
           <Product
             key={product.id}
             {...product}
-            imgSrc={cameraImg}
+            imgSrc={product.src}
             setCartItems={setCartItems}
             openModal={openModal}
           />
         ))}
+      </div>
+      <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span class="text-secondary" aria-hidden="true">
+                  «
+                </span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link text-secondary" href="#">
+                1
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link text-secondary" href="#">
+                2
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link text-secondary" href="#">
+                3
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span class="text-secondary" aria-hidden="true">
+                  »
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

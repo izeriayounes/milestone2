@@ -1,5 +1,7 @@
 import introImage from "../assets/intro-image.jpg";
-import cameraImg from "../assets/img.webp";
+import tote3 from "../assets/tote3.jpg";
+import tote4 from "../assets/tote4.jpg";
+import tote5 from "../assets/tote5.jpg";
 import Link from "../components/Link";
 import Product from "../components/Product";
 
@@ -7,25 +9,27 @@ export default function Home({ setCartItems, openModal }) {
   const products = [
     {
       id: 1,
-      name: "Product 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      name: "Simply You",
+      description: " Simple Letter Fashion Tote Bag. ",
       category: "Category 1",
-      price: "19.99",
+      price: "6.99",
+      src: tote3,
     },
     {
       id: 2,
-      name: "Product 2",
-      description: "Sed do eiusmod tempor incididunt ut labore et dolore .",
+      name: "Cute Bear",
+      description: " Graphic Fashion Printed Casual Canvas Tote Bag. ",
       category: "Category 2",
-      price: "24.99",
+      price: "5.37",
+      src: tote4,
     },
     {
       id: 3,
-      name: "Product 3",
-      description:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      name: "Love All",
+      description: " Letter Printed Casual Canvas Tote Bag. ",
       category: "Category 3",
-      price: "29.99",
+      price: "7.69",
+      src: tote5,
     },
   ];
   return (
@@ -35,12 +39,13 @@ export default function Home({ setCartItems, openModal }) {
       <div className="container intro bg-secondary p-5">
         <div className="row text-white">
           <div className="col-md-6">
-            <h1>Welcome to My Online Store</h1>
+            <h1>Welcome to Tote-ally</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              tincidunt quam nec arcu fringilla, sed condimentum dui convallis.
-              Nulla facilisi. Nunc euismod ultricies sem, eget eleifend risus
-              iaculis nec.
+              Each tote bag at Tote-ally is meticulously crafted with attention
+              to detail. We source the finest, eco-friendly materials to ensure
+              durability and longevity. Our skilled artisans put their heart and
+              soul into every stitch, resulting in a product that not only looks
+              good but stands the test of time.
             </p>
             <p>
               Discover our wide range of products and shop with confidence. We
@@ -87,7 +92,7 @@ export default function Home({ setCartItems, openModal }) {
             <Product
               key={product.id}
               {...product}
-              imgSrc={cameraImg}
+              imgSrc={product.src}
               setCartItems={setCartItems}
               openModal={openModal}
             />

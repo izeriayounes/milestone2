@@ -6,7 +6,8 @@ export default function Contact() {
           <h2>Contact Us</h2>
           <p>
             If you have any questions or need assistance, please feel free to
-            get in touch with us. We're here to help!
+            get in touch with us here at Tote-ally. We're here to tote-ally
+            help!{" "}
           </p>
         </div>
         <div className="col-lg-6">
