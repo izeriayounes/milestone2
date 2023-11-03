@@ -67,7 +67,7 @@ export default function Home({ setCartItems, openModal }) {
           <h2 className="section-title">Featured Products</h2>
           <div className="btn-wrap">
             <div className="btn-wrap">
-              <Link to="/products" className="d-flex align-items-center">
+              <Link to="/products" className="flex align-items-center">
                 View all products
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@ export default function Home({ setCartItems, openModal }) {
           </div>
         </div>
         {/* Featured Products */}
-        <div className="row">
+        <div className="px-6 row">
           {products.map((product) => (
             <Product
               key={product.id}
@@ -95,6 +95,7 @@ export default function Home({ setCartItems, openModal }) {
               imgSrc={product.src}
               setCartItems={setCartItems}
               openModal={openModal}
+              featuredProduct={true}
             />
           ))}
         </div>

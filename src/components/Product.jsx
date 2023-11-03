@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { post } from "../api/apiService";
 
 export default function Product({
+  id,
+  src,
   openModal,
-  setCartItems,
-  imgSrc,
   name,
   description,
   category,
   price,
+  featuredProduct,
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -19,34 +21,25 @@ export default function Product({
     setIsHovered(false);
   };
 
-  const handleClick = () => {
-    const itemToAdd = {
-      id: Date.now(),
-      image: imgSrc,
-      name,
-      description,
-      category,
-      price,
-      quantity: 1,
-    };
-    setCartItems((prevItems) => {
-      console.log(prevItems);
-      return [...prevItems, itemToAdd];
-    });
-
-    openModal();
+  const handleClick = async () => {
+    try {
+      await post(`cartItems?productId=${id}`);
+      openModal();
+    } catch (error) {
+      console.error("Error adding item to cart:", error);
+    }
   };
 
   return (
-    <div className="col-md-4">
+    <div className="col-md-3">
       <div
         className="card mb-4"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div style={{ position: "relative" }}>
-          <img src={imgSrc} className="card-img-top" alt={name} />
-          {isHovered && (
+          <img src={src} className="card-img-top" alt={name} />
+          {!featuredProduct && isHovered && (
             <button
               className="btn btn-primary"
               onClick={handleClick}
