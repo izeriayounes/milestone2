@@ -8,28 +8,40 @@ import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import { useState } from "react";
+import { useAuthStateContext } from "./context/AuthContext";
+import Login from "./pages/Login";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { customerId, username } = useAuthStateContext();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openCart = () => {
+    setIsCartOpen(true);
   };
 
-  const closeModal = () => {
-    console.log("yo please work");
-    setIsModalOpen(false);
+  const openLogin = () => {
+    closeCart();
+    setIsLoginOpen(true);
+  };
+
+  const closeLogin = () => {
+    setIsLoginOpen(false);
+  };
+
+  const closeCart = () => {
+    setIsCartOpen(false);
   };
 
   return (
     <div>
-      <Navbar onClick={openModal} />
+      <Navbar onClick={openCart} username={username} />
       <Route path={"/"}>
-        <Home setCartItems={setCartItems} openModal={openModal} />
+        <Home setCartItems={setCartItems} openModal={openCart} />
       </Route>
       <Route path={"/products"}>
-        <Products setCartItems={setCartItems} openModal={openModal} />
+        <Products setCartItems={setCartItems} openModal={openCart} />
       </Route>
       <Route path={"/about"}>
         <About />
@@ -37,13 +49,16 @@ function App() {
       <Route path={"/contact"}>
         <Contact />
       </Route>
-      {isModalOpen && (
+      {isCartOpen && (
         <Cart
-          onClose={closeModal}
+          onClose={closeCart}
           setCartItems={setCartItems}
           cartItems={cartItems}
+          openLogin={openLogin}
+          customerId={customerId}
         />
       )}
+      {isLoginOpen && <Login size="lg" onClose={closeLogin} title="" />}
       <Footer />
     </div>
   );

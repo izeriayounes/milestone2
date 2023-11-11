@@ -1,5 +1,5 @@
 /* Ensure the modal is in the right */
-.right-full-height-modal {
+.cart-modal {
   height: 100%;
   margin-top: 0;
   padding: 2em;
@@ -12,6 +12,14 @@
   background-color: #fff;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
+}
+
+.login-modal {
+  border-radius: 0.5rem;
+  padding: 2rem;
+  max-width: 90%;
+  width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .modal-content {

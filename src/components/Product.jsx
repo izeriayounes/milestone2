@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { post } from "../api/apiService";
+import { useAuthStateContext } from "../context/AuthContext";
 
 export default function Product({
   id,
@@ -12,6 +13,7 @@ export default function Product({
   featuredProduct,
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const { customerId } = useAuthStateContext();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -23,7 +25,7 @@ export default function Product({
 
   const handleClick = async () => {
     try {
-      await post(`cartItems?productId=${id}`);
+      await post(`cartItems?productId=${id}&customerId=${customerId}`);
       openModal();
     } catch (error) {
       console.error("Error adding item to cart:", error);
@@ -33,7 +35,7 @@ export default function Product({
   return (
     <div className="col-md-3">
       <div
-        className="card mb-4"
+        className="card mb-4 bg-white rounded shadow"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

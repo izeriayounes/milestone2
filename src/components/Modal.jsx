@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 
-function Modal({ onClose, size, title, children }) {
+function Modal({ onClose, size, title, children, loginModal, cartModal }) {
   useEffect(() => {
     document.body.classList.add("modal-open");
 
@@ -12,11 +12,13 @@ function Modal({ onClose, size, title, children }) {
   }, []);
 
   const handleBackdropClick = (e) => {
-    console.log("yoooooo hahahaha");
     if (e.target.classList.contains("modal-backdrop")) {
       onClose();
     }
   };
+
+  const modalPosition = cartModal ? "cart-modal" : "login-modal";
+  console.log(cartModal);
 
   return ReactDOM.createPortal(
     <div>
@@ -31,7 +33,7 @@ function Modal({ onClose, size, title, children }) {
         style={{ display: "block" }}
       >
         <div
-          className={`modal-dialog right-full-height-modal modal-${size}`}
+          className={`modal-dialog ${modalPosition} modal-${size}`}
           role="document"
         >
           <div className="modal-content">

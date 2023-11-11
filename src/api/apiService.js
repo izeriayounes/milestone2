@@ -1,10 +1,34 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const API_URL = "https://localhost:7100/api";
 
 const axiosInstance = axios.create();
 
 axiosInstance.defaults.baseURL = API_URL;
+
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      if (window.location.pathname !== "/login") {
+        window.location.pathname = "/login";
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
+const setAuthToken = (token) => {
+  if (token) {
+    axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else {
+    delete axiosInstance.defaults.headers.common["Authorization"];
+  }
+};
+
+const token = localStorage.getItem("token");
+setAuthToken(token);
 
 const get = async (route) => {
   try {
@@ -50,4 +74,25 @@ const remove = async (route) => {
   }
 };
 
-export { get, post, put, remove };
+const login = async (creds) => {
+  try {
+    const response = await axiosInstance.post("/Customers/login", creds);
+    const token = response.data.token;
+    const userId = response.data.customerId;
+    localStorage.setItem("token", token);
+    localStorage.setItem("userId", userId);
+    setAuthToken(token);
+    return response.data;
+  } catch (error) {
+    console.error("Login error:", error.message);
+    throw error;
+  }
+};
+
+const logout = async () => {
+  localStorage.removeItem("token");
+  setAuthToken(null);
+  toast.success(`You have been logged out!`);
+};
+
+export { get, post, put, remove, login, logout };

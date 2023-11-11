@@ -1,7 +1,20 @@
+import { useState } from "react";
 import Link from "./Link";
 import "./Navbar.css";
+import { logout } from "../api/apiService";
 
-function Navbar({ onClick }) {
+function Navbar({ onClick, username }) {
+  const [showLogout, setShowLogout] = useState(false);
+
+  const toggleLogout = () => {
+    setShowLogout(!showLogout);
+  };
+
+  const logoutFunction = () => {
+    logout();
+    setTimeout(() => (window.location.pathname = "/"), 2000);
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-secondary px-3">
@@ -39,7 +52,25 @@ function Navbar({ onClick }) {
               </li>
             </ul>
           </div>
-          <ul className="navbar-nav ml-auto bag">
+          {username && (
+            <div className="navbar-nav ml-auto cursor-pointer">
+              <span
+                className="nav-link text-white username-text"
+                onClick={toggleLogout}
+              >
+                Hello, {username}
+              </span>
+              {showLogout && (
+                <span
+                  className="nav-link text-white logout-text"
+                  onClick={logoutFunction}
+                >
+                  Logout
+                </span>
+              )}
+            </div>
+          )}
+          <ul className="navbar-nav ml-auto cursor-pointer">
             <li className="nav-item">
               <i className="bi bi-bag text-white" onClick={onClick}></i>
             </li>
