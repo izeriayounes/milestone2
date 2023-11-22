@@ -10,11 +10,13 @@ import Cart from "./pages/Cart";
 import { useState } from "react";
 import { useAuthStateContext } from "./context/AuthContext";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const { customerId, username } = useAuthStateContext();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
   const openCart = () => {
@@ -30,13 +32,22 @@ function App() {
     setIsLoginOpen(false);
   };
 
+  const openRegister = () => {
+    closeLogin();
+    setIsRegisterOpen(true);
+  };
+
+  const closeRegister = () => {
+    setIsRegisterOpen(false);
+  };
+
   const closeCart = () => {
     setIsCartOpen(false);
   };
 
   return (
     <div>
-      <Navbar onClick={openCart} username={username} />
+      <Navbar onClick={openCart} username={username} openLogin={openLogin} />
       <Route path={"/"}>
         <Home setCartItems={setCartItems} openModal={openCart} />
       </Route>
@@ -58,7 +69,10 @@ function App() {
           customerId={customerId}
         />
       )}
-      {isLoginOpen && <Login size="lg" onClose={closeLogin} title="" />}
+      {isLoginOpen && (
+        <Login onClose={closeLogin} title="" openRegister={openRegister} />
+      )}
+      {isRegisterOpen && <Register onClose={closeRegister} title=""></Register>}
       <Footer />
     </div>
   );

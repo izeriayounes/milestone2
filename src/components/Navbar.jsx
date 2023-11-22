@@ -3,7 +3,7 @@ import Link from "./Link";
 import "./Navbar.css";
 import { logout } from "../api/apiService";
 
-function Navbar({ onClick, username }) {
+function Navbar({ onClick, username, openLogin }) {
   const [showLogout, setShowLogout] = useState(false);
 
   const toggleLogout = () => {
@@ -12,7 +12,7 @@ function Navbar({ onClick, username }) {
 
   const logoutFunction = () => {
     logout();
-    setTimeout(() => (window.location.pathname = "/"), 2000);
+    setTimeout(() => (window.location.pathname = "/"), 1000);
   };
 
   return (
@@ -68,6 +68,16 @@ function Navbar({ onClick, username }) {
                   Logout
                 </span>
               )}
+            </div>
+          )}
+          {!username && (
+            <div className="navbar-nav ml-auto cursor-pointer">
+              <span
+                className="nav-link text-white username-text"
+                onClick={openLogin}
+              >
+                Login
+              </span>
             </div>
           )}
           <ul className="navbar-nav ml-auto cursor-pointer">

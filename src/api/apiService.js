@@ -89,10 +89,25 @@ const login = async (creds) => {
   }
 };
 
+const registerUser = async (creds) => {
+  try {
+    await axiosInstance.post("/Customers/register", creds);
+    const response = await axiosInstance.post("/Customers/login", creds);
+    const token = response.data.token;
+    const userId = response.data.customerId;
+    localStorage.setItem("token", token);
+    localStorage.setItem("userId", userId);
+    setAuthToken(token);
+    return response.data;
+  } catch (error) {
+    console.error("Register error:", error.message);
+    throw error;
+  }
+};
 const logout = async () => {
   localStorage.removeItem("token");
   setAuthToken(null);
   toast.success(`You have been logged out!`);
 };
 
-export { get, post, put, remove, login, logout };
+export { get, post, put, remove, login, logout, registerUser };

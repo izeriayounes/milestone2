@@ -3,6 +3,7 @@ import { get, post, put, remove } from "../api/apiService";
 import Modal from "../components/Modal";
 import { useAuthStateContext } from "../context/AuthContext";
 import defaultImage from "../assets/noImage.png";
+import Link from "../components/Link";
 
 export default function Cart({ onClose, openLogin, customerId }) {
   const [cartItems, setCartItems] = useState([]);
@@ -39,7 +40,6 @@ export default function Cart({ onClose, openLogin, customerId }) {
     const { id } = cartItems[index];
     const updatedCartItem = { id, quantity: newQuantity };
     try {
-      console.log(updatedCartItem);
       await put(`cartItems/${id}`, updatedCartItem);
     } catch (error) {
       console.error(`Error updating cart item with ID ${id}:`, error);
@@ -74,7 +74,7 @@ export default function Cart({ onClose, openLogin, customerId }) {
 
   if (cartItems.length === 0 && isAuth) {
     return (
-      <Modal size="lg" onClose={onClose} title="">
+      <Modal size="lg" onClose={onClose} title="" cartModal>
         <div
           className="d-flex justify-content-center align-items-center"
           style={{ height: "60vh" }}
@@ -87,6 +87,9 @@ export default function Cart({ onClose, openLogin, customerId }) {
             <p className="font-weight-norma">
               Your cart is empty! Start shopping now.
             </p>
+            <Link to="/products" className="btn btn-outline-dark mb-4">
+              Shop Now
+            </Link>
           </div>
         </div>
       </Modal>
@@ -95,14 +98,14 @@ export default function Cart({ onClose, openLogin, customerId }) {
 
   if (!isAuth) {
     return (
-      <Modal size="lg" onClose={onClose} title="" cartModal={true}>
+      <Modal size="lg" onClose={onClose} title="" cartModal>
         <div className="d-flex flex-column align-items-center justify-content-center">
           <i
             className="bi bi-cart-x-fill"
             style={{ fontSize: "5rem", marginBottom: "1rem" }}
           ></i>
           <p>You are not authenticated. Please login!</p>
-          <button className="btn btn-primary" onClick={openLogin}>
+          <button className="btn btn-outline-dark mb-4" onClick={openLogin}>
             Login
           </button>
         </div>

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
 
-function Modal({ onClose, size, title, children, loginModal, cartModal }) {
+function Modal({ onClose, title, children, cartModal }) {
   useEffect(() => {
     document.body.classList.add("modal-open");
 
@@ -18,7 +18,6 @@ function Modal({ onClose, size, title, children, loginModal, cartModal }) {
   };
 
   const modalPosition = cartModal ? "cart-modal" : "login-modal";
-  console.log(cartModal);
 
   return ReactDOM.createPortal(
     <div>
@@ -32,10 +31,7 @@ function Modal({ onClose, size, title, children, loginModal, cartModal }) {
         role="dialog"
         style={{ display: "block" }}
       >
-        <div
-          className={`modal-dialog ${modalPosition} modal-${size}`}
-          role="document"
-        >
+        <div className={`modal-dialog ${modalPosition}`} role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h3 className="modal-title font-weight-bold">{title}</h3>

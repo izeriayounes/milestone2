@@ -1,17 +1,16 @@
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import Modal from "../components/Modal";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { login } from "../api/apiService";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import Modal from "../components/Modal";
 
-function Login({ size, onClose, title }) {
+function Login({ onClose, title, openRegister }) {
   const { register, handleSubmit } = useForm();
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       await login(data);
       window.location.pathname = "/";
       setShowErrorMessage(false);
@@ -22,16 +21,15 @@ function Login({ size, onClose, title }) {
   };
 
   return (
-    <Modal size="lg" onClose={onClose} title={title}>
+    <Modal onClose={onClose} title={title}>
       <div className="p-5">
-        <div className="text-center h4 mb-4">Please login</div>
+        <div className="text-center h4 mb-4">Welcome back! Please login</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="Username"
             id="username"
             type="text"
             register={register}
-            onKeyDown={null}
             required
           />
           <Input
@@ -39,15 +37,23 @@ function Login({ size, onClose, title }) {
             id="password"
             type="password"
             register={register}
-            onKeyDown={null}
             required
           />
           {showErrorMessage && (
             <div className="text-danger small">
-              Invalid inforamtions. Please retry!
+              Invalid information. Please retry!
             </div>
           )}
-          <Button>login</Button>
+          <p>
+            Not registered yet?{" "}
+            <span
+              className="text-primary cursor-pointer"
+              onClick={openRegister}
+            >
+              <u>Register</u>
+            </span>
+          </p>
+          <Button>Login</Button>
         </form>
       </div>
     </Modal>
