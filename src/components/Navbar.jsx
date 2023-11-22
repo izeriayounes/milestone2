@@ -61,12 +61,17 @@ function Navbar({ onClick, username, openLogin }) {
                 Hello, {username}
               </span>
               {showLogout && (
-                <span
-                  className="nav-link text-white logout-text"
-                  onClick={logoutFunction}
-                >
-                  Logout
-                </span>
+                <>
+                  <span
+                    className="nav-link text-white logout-text"
+                    onClick={logoutFunction}
+                  >
+                    Logout
+                  </span>
+                  <span className="nav-link text-white logout-text">
+                    Orders
+                  </span>
+                </>
               )}
             </div>
           )}
